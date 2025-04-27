@@ -9,7 +9,7 @@ const lengthErrAlt = "must be between 3 and 10 characters.";
 const lengthErrTitle = "must be below 40 characters.";
 const lengthErrSummary = "must be below 500 characters.";
 
-function validateUserEntry() {
+function validateUser() {
   return [
     body("firstname")
       .trim()
@@ -33,5 +33,5 @@ function validateUserEntry() {
 }
 
 module.exports = {
-  validateUserEntry
+   validateUser
 }

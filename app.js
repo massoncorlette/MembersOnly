@@ -2,34 +2,19 @@
 
 require('dotenv').config();
 const path = require("node:path");
-const { Pool } = require("pg");
 const express = require("express");
-const session = require("express-session");
-const passport = require("passport");
-const bcrypt = require("bcryptjs");
-const LocalStrategy = require('passport-local').Strategy;
-
-const pool = new Pool({
-  host: process.env.PGHOST,
-  user: process.env.PGUSER,
-  database: process.env.PGDATABASE,
-  password: process.env.PGPASSWORD,
-  port: process.env.PGPORT,
-});
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
-app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
+const pool = require("./db/pool");
 
+const loginRouter = require("./routes/login");
 
-
-
-
+app.use("/", loginRouter);
 
 
 
