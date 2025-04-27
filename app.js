@@ -25,11 +25,19 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
+
+
+
+
+
+
+
+
+
+
 app.get("/", (req, res) => {
   res.render("index", { user: req.user });
 });
-
-app.get("/sign-up", (req, res) => res.render("sign-up-form"));
 
 app.post(
   "/log-in",
@@ -48,11 +56,12 @@ app.get("/log-out", (req, res, next) => {
   });
 });
 
+app.get("/sign-up", (req, res) => res.render("sign-up-form"));
 
 app.post("/sign-up", async (req, res, next) => {
   try {
    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-   await pool.query("insert into users (username, password) values ($1, $2)", [req.body.username, hashedPassword]);
+   await pool.query("insert into users (first, last, email, password) values ($1, $2, $3, $4)", [req.body.firstname, req.body.lastname, req.body.email, hashedPassword]);
    res.redirect("/");
   } catch (error) {
      console.error(error);
@@ -62,9 +71,9 @@ app.post("/sign-up", async (req, res, next) => {
  
 
 passport.use(
-  new LocalStrategy(async (username, password, done) => {
+  new LocalStrategy(async (email, password, done) => {
     try {
-      const { rows } = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
+      const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
       const user = rows[0];
 
       if (!user) {

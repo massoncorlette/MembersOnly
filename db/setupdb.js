@@ -13,9 +13,8 @@ CREATE TABLE IF NOT EXISTS users (
   first VARCHAR ( 20 ),
   last VARCHAR ( 20 ),
   email VARCHAR ( 255 ),
+  password VARCHAR ( 255 )
 );
-
-
 
 CREATE TABLE IF NOT EXISTS membermessages (
   message_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -24,10 +23,7 @@ CREATE TABLE IF NOT EXISTS membermessages (
   FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
-
 `;
-
-
 
 async function main() {
   console.log("seeding...");
