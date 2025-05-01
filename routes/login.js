@@ -6,15 +6,11 @@ const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
 
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
-app.use(passport.session());
-
-
 // const { displayHome } = require("../controllers/viewController");
 
-const { handleReadUser } = require("../controllers/dataController/viewController");
+//const { handleReadUser } = require("../controllers/dataController/viewController");
 const { validateUser } = require("../controllers/validation");
-const { displayLogin } = requrie("../controllers/viewController");
+//const { displayLogin } = requrie("../controllers/viewController");
 
 const loginRouter = Router();
 loginRouter.use(express.urlencoded({ extended: true }));
