@@ -3,7 +3,7 @@
 
 async function displayLogin(req, res, next) {
 
-  res.render("login");
+  res.render("index", { user: req.user });
 
 };
 

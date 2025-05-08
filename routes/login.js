@@ -1,9 +1,8 @@
 const express = require("express");
-const { Router } = require("express");
 const session = require("express-session");
-const passport = require("passport");
-const bcrypt = require("bcryptjs");
-const LocalStrategy = require('passport-local').Strategy;
+const { Router } = require("express");
+const { passport } = require("../config/passport");
+const { displayLogin } = require("../controllers/viewController");
 
 
 // const { displayHome } = require("../controllers/viewController");
@@ -15,16 +14,25 @@ const { validateUser } = require("../controllers/validation");
 const loginRouter = Router();
 loginRouter.use(express.urlencoded({ extended: true }));
 
-loginRouter.get("/", async (req, res, next) => {
+// session middleware
+loginRouter.use(session({
+  secret: 'cats',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// loginRouter.use(passport.session()); ?
+
+loginRouter.get("/", (req, res, next) => {
   return displayLogin(req, res, next);
 });
 
 //check this
 loginRouter.post("/", async (req, res, next) => {
   validateUser(),
-  handleReadUser,
+  //handleReadUser,
   passport.authenticate("local", {
-    successRedirect: "/home",
+    successRedirect: "/",
     failureRedirect: "/"
   })
 });

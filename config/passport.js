@@ -1,11 +1,7 @@
 
-const session = require("express-session");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
-
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
-app.use(passport.session());
 
 passport.use(
   new LocalStrategy(async (email, password, done) => {

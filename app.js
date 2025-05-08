@@ -10,16 +10,11 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: false }));
 
-const pool = require("./db/pool");
-
 const loginRouter = require("./routes/login");
+const signupRouter = require("./routes/signup");
 
 app.use("/", loginRouter);
-
-app.get("/", (req, res) => {
-  res.render("index", { user: req.user });
-});
-
+app.use("/sign-up", signupRouter);
 
 app.get("/log-out", (req, res, next) => {
   req.logout((err) => {
@@ -29,19 +24,5 @@ app.get("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
-
-app.get("/sign-up", (req, res) => res.render("sign-up-form"));
-
-app.post("/sign-up", async (req, res, next) => {
-  try {
-   const hashedPassword = await bcrypt.hash(req.body.password, 10);
-   await pool.query("insert into users (first, last, email, password) values ($1, $2, $3, $4)", [req.body.firstname, req.body.lastname, req.body.email, hashedPassword]);
-   res.redirect("/");
-  } catch (error) {
-     console.error(error);
-     next(error);
-    }
- });
- 
 
 app.listen(3000, () => console.log("app listening on port 3000!"));
