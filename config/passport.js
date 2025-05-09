@@ -9,6 +9,8 @@ passport.use(
       const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
       const user = rows[0];
 
+      console.log(user);
+
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
@@ -43,5 +45,13 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-module.exports = passport;
+async function authenticateUser() {
+  console.log("test");
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/"
+  })
+}
+
+module.exports = authenticateUser;
 

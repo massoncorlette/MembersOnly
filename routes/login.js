@@ -1,7 +1,7 @@
 const express = require("express");
 const session = require("express-session");
+const authenticateUser = require("../config/passport");
 const { Router } = require("express");
-const { passport } = require("../config/passport");
 const { displayLogin } = require("../controllers/viewController");
 
 
@@ -28,13 +28,11 @@ loginRouter.get("/", (req, res, next) => {
 });
 
 //check this
-loginRouter.post("/", async (req, res, next) => {
+loginRouter.post("/log-in", async (req, res, next) => {
   validateUser(),
   //handleReadUser,
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/"
-  })
+  // calls the LocalStrategy in passport.js
+  authenticateUser();
 });
 
 
