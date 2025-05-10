@@ -2,6 +2,7 @@
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
+const pool = require('../db/pool');
 
 passport.use(
   new LocalStrategy(async (email, password, done) => {
@@ -47,7 +48,7 @@ passport.deserializeUser(async (id, done) => {
 
 async function authenticateUser() {
   console.log("test");
-  passport.authenticate("local", {
+  return passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/"
   })

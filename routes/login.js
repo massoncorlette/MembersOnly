@@ -5,6 +5,8 @@ const { Router } = require("express");
 const { displayLogin } = require("../controllers/viewController");
 
 
+//gitignore is not working
+
 // const { displayHome } = require("../controllers/viewController");
 
 //const { handleReadUser } = require("../controllers/dataController/viewController");
