@@ -29,14 +29,7 @@ loginRouter.get("/", (req, res, next) => {
   return displayLogin(req, res, next);
 });
 
-//check this
-loginRouter.post("/log-in", async (req, res, next) => {
-  validateUser(),
-  //handleReadUser,
-  // calls the LocalStrategy in passport.js
-  authenticateUser();
-});
-
+loginRouter.post("/log-in", validateUser(), authenticateUser);
 
 
 
