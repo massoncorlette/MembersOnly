@@ -46,14 +46,11 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-async function authenticateUser(req, res, next) {
-  console.log("test");
-  // returns middleware
-   passport.authenticate("local", {
+const authenticateUser = (req, res, next) =>
+  passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/"
-  })
-};
+  })(req, res, next);
 
 
 

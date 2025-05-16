@@ -1,21 +1,35 @@
 const express = require("express");
+const session = require("express-session");
+const authenticateUser = require("../config/passport");
 const { Router } = require("express");
+const { displayLogin } = require("../controllers/viewController");
 
+
+// const { displayHome } = require("../controllers/viewController");
+
+//const { handleReadUser } = require("../controllers/dataController/viewController");
+const { validateUser } = require("../controllers/validation");
+//const { displayLogin } = requrie("../controllers/viewController");
 
 const indexRouter = Router();
 indexRouter.use(express.urlencoded({ extended: true }));
 
-indexRouter.get("/", (req, res) => {
-  res.render("index", { user: req.user });
+// session middleware
+indexRouter.use(session({
+  secret: 'cats',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// loginRouter.use(passport.session()); ?
+
+indexRouter.get("/", (req, res, next) => {
+  return displayLogin(req, res, next);
 });
 
+indexRouter.post("/log-in", validateUser(), authenticateUser);
 
 
-indexRouter.get("/log-out", (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
-});
+
+
+module.exports = indexRouter;

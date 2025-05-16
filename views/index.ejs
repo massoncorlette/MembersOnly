@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Log In</title>
+  <title>Welcome World</title>
 </head>
 <body>
   <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
+    <%- include("/home.ejs") %>
   <% } else { %>
     <h1>please log in</h1>
     <form action="/log-in" method="POST">

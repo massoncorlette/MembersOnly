@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /////// app.js
 
 require('dotenv').config();
@@ -10,10 +11,12 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: false }));
 
-const loginRouter = require("./routes/login");
+const indexRouter = require("./routes/index");
+const homeRouter = require("./routes/home");
 const signupRouter = require("./routes/signup");
 
-app.use("/", loginRouter);
+app.use("/", indexRouter);
+app.use("/home", homeRouter);
 app.use("/sign-up", signupRouter);
 
 app.get("/log-out", (req, res, next) => {

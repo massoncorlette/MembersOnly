@@ -2,7 +2,7 @@
 const { validationResult } = require("express-validator");
 
 
-async function handleCreateUser(req, res, next) {
+async function handleCreateUser(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render("error", {
@@ -10,7 +10,7 @@ async function handleCreateUser(req, res, next) {
     });
   }
 
-  const { genrename } = req.body;
+ // const { genrename } = req.body;
 
  // try {
   // await db.createGenre(genrename); // getting ID from parsed URL from form action value 
