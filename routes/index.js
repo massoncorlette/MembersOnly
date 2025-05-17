@@ -3,6 +3,8 @@ const session = require("express-session");
 const authenticateUser = require("../config/passport");
 const { Router } = require("express");
 const { displayLogin } = require("../controllers/viewController");
+const pgSession = require('connect-pg-simple')(session);
+const pgPool = require("../db/pool");
 
 
 // const { displayHome } = require("../controllers/viewController");
@@ -14,14 +16,19 @@ const { validateUser } = require("../controllers/validation");
 const indexRouter = Router();
 indexRouter.use(express.urlencoded({ extended: true }));
 
-// session middleware
-indexRouter.use(session({
-  secret: 'cats',
-  resave: false,
-  saveUninitialized: false
-}));
 
-// loginRouter.use(passport.session()); ?
+
+indexRouter.use(session({
+  store: new pgSession({
+    pool : pgPool  ,
+    createTableIfMissing: true
+           
+  }),
+  // express session options
+  secret: "cats",
+  resave: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
+}));
 
 indexRouter.get("/", (req, res, next) => {
   return displayLogin(req, res, next);

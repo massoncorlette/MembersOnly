@@ -7,6 +7,13 @@ async function displayLogin(req, res) {
 
 };
 
+async function displayHome(req,res,next) {
+
+  res.render(("home") , {user: req.user});
+
+};
+
 module.exports = {
-  displayLogin
+  displayLogin, 
+  displayHome
 };

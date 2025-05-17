@@ -5,12 +5,11 @@ const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../db/pool');
 
 passport.use(
-  new LocalStrategy(async (email, password, done) => {
+  new LocalStrategy(async (username, password, done) => {
     try {
-      const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+      const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [username]);
       const user = rows[0];
 
-      console.log(user);
 
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
@@ -32,13 +31,16 @@ passport.use(
 
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  console.log("serialize");
+  done(null, user.user_id);
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
     const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
     const user = rows[0];
+
+    console.log(user);
 
     done(null, user);
   } catch(err) {
@@ -48,7 +50,7 @@ passport.deserializeUser(async (id, done) => {
 
 const authenticateUser = (req, res, next) =>
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/home",
     failureRedirect: "/"
   })(req, res, next);
 
