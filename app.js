@@ -19,7 +19,7 @@ app.use("/", indexRouter);
 app.use("/home", homeRouter);
 app.use("/sign-up", signupRouter);
 
-app.get("/log-out", (req, res, next) => {
+app.post("/log-out", (req, res, next) => {
   req.logout((err) => {
     if (err) {
       return next(err);

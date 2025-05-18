@@ -1,6 +1,6 @@
 # AuthenticationPractice
 
-For this project I am setting up users on postegre hashing passwords with bycrypt. Using routes to pass passport module using passport local strategy to authenticate users upon req on login submissions. Using express-session to maintain a state between backend to keep users logged in.
+For this project I am setting up users on postegre hashing passwords with bycrypt. Using routes to pass passport module using passport local strategy to authenticate users upon req on login submissions. Using express-session to maintain a state between backend to keep users logged in on new req or server crashes, enhancing security. 
 
 Passport explanation: using Local strategy, I am using a callback function using arrow 
 

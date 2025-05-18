@@ -28,6 +28,7 @@ indexRouter.use(session({
   secret: "cats",
   resave: false,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
+  saveUninitialized: true
 }));
 
 indexRouter.get("/", (req, res, next) => {
