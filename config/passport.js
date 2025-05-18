@@ -10,6 +10,7 @@ passport.use(
       const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [username]);
       const user = rows[0];
 
+      console.log(user);
 
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
@@ -35,9 +36,9 @@ passport.serializeUser((user, done) => {
   done(null, user.user_id);
 });
 
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async (user_id, done) => {
   try {
-    const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+    const { rows } = await pool.query("SELECT * FROM users WHERE user_id = $1", [user_id]);
     const user = rows[0];
 
     console.log(user);
