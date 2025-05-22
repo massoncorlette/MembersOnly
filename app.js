@@ -4,16 +4,33 @@
 require('dotenv').config();
 const path = require("node:path");
 const express = require("express");
-
+const session = require("express-session");
+const passport = require("passport");
+const pgSession = require('connect-pg-simple')(session);
+const pgPool = require("./db/pool");
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(express.urlencoded({ extended: false }));
-
 const indexRouter = require("./routes/index");
 const homeRouter = require("./routes/home");
 const signupRouter = require("./routes/signup");
+
+app.use(session({
+  store: new pgSession({
+    pool : pgPool  ,
+    createTableIfMissing: true
+           
+  }),
+  // express session options
+  secret: "cats",
+  resave: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
+  saveUninitialized: true
+}));
+
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 app.use("/home", homeRouter);

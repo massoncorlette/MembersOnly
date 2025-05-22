@@ -1,6 +1,6 @@
 <div>
   <% console.log(user) %>
-  <h1>WELCOME BACK <%= user %></h1>
+  <h1>WELCOME BACK <%= currentUser.first %></h1>
   <form action="/log-out" method="POST">
     <button type="submit">
       LOG OUT
