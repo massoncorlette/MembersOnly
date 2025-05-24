@@ -1,24 +1,29 @@
 
 const { validationResult } = require("express-validator");
 
+const bcrypt = require("bcryptjs");
+const pool = require("../../db/pool");
 
-async function handleCreateUser(req, res) {
+
+async function handleCreateUser(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).render("error", {
+    return res.status(400).render("/sign-up-form", {
       errors: errors.array(),
     });
   }
 
- // const { genrename } = req.body;
+ // const { user } = req.body;
 
- // try {
-  // await db.createGenre(genrename); // getting ID from parsed URL from form action value 
- //  res.redirect("/");
-//  } catch (err) {
-    //res.status(500).send("error");
- // }
-}
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    await pool.query("insert into users (first, last, email, password) values ($1, $2, $3, $4)", [req.body.firstname, req.body.lastname, req.body.email, hashedPassword]);
+    res.redirect("/");
+  } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  };
 
 
 module.exports = {

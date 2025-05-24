@@ -23,7 +23,7 @@ function validateCreateUser() {
     body("email")
       .trim()
       .notEmpty()
-      .isEmail()
+      .isEmail().withMessage('Must be a valid email')
       .custom(async value => {
         const user = await checkEmail(value);
         if (user) {
@@ -40,6 +40,11 @@ function validateCreateUser() {
 
 function validateUser() {
   return [
+    body("email")
+      .trim()
+      .notEmpty()
+      .isEmail().withMessage('Must be a valid email'),
+    body('password').isLength({ min: 5 }),
 
   ]
 }
