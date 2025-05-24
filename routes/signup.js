@@ -2,6 +2,7 @@ const express = require("express");
 const { Router } = require("express");
 const bcrypt = require("bcryptjs");
 const pool = require("../db/pool");
+const handleCreateUser = require("../controllers/dataController/createController");
 
 const signupRouter = Router();
 signupRouter.use(express.urlencoded({ extended: true }));

@@ -5,15 +5,15 @@ const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../db/pool');
 
 passport.use(
-  new LocalStrategy(async (username, password, done) => {
+  new LocalStrategy(async (email, password, done) => {
     try {
-      const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [username]);
+      const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
       const user = rows[0];
 
       console.log(user);
 
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        return done(null, false, { message: "Incorrect email" });
       }
 
       //comparing login password to hashed stored password

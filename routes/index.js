@@ -1,4 +1,3 @@
-const express = require("express");
 const authenticateUser = require("../config/passport");
 const { Router } = require("express");
 const { displayLogin } = require("../controllers/viewController");
@@ -11,9 +10,6 @@ const { validateUser } = require("../controllers/validation");
 //const { displayLogin } = requrie("../controllers/viewController");
 
 const indexRouter = Router();
-indexRouter.use(express.urlencoded({ extended: true }));
-
-
 
 indexRouter.get("/", (req, res, next) => {
   return displayLogin(req, res, next);
