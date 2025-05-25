@@ -8,7 +8,7 @@ const pool = require("../../db/pool");
 async function handleCreateUser(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).render("/sign-up-form", {
+    return res.status(400).render("sign-up-form", {
       errors: errors.array(),
     });
   }

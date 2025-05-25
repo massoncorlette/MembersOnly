@@ -3,11 +3,11 @@
 
 async function displayLogin(req, res) {
 
-  res.render("index");
+  res.render("index" );
 
 };
 
-async function displayHome(req,res,next) {
+async function displayHome(req,res) {
 
   res.render(("home") , {user: req.user});
 

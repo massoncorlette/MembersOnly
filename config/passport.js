@@ -5,12 +5,12 @@ const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../db/pool');
 
 passport.use(
-  new LocalStrategy(async (email, password, done) => {
+  new LocalStrategy(async (username, password, done) => {
     try {
-      const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+      const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [username]);
       const user = rows[0];
 
-      console.log(user);
+      console.log(user, "passport yo");
 
       if (!user) {
         return done(null, false, { message: "Incorrect email" });
@@ -49,6 +49,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 const authenticateUser = (req, res, next) =>
+  
   passport.authenticate("local", {
     successRedirect: "/home",
     failureRedirect: "/"

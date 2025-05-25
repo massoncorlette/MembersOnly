@@ -1,5 +1,5 @@
 const { body } = require("express-validator");
-const checkEmail = require("../db/queries");
+const { checkEmail } = require("../db/queries");
 
 const alphaErr = "must only contain letters.";
 const lengthErr = "must be between 5 and 24 characters.";
