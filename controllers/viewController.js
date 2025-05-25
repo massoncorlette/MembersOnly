@@ -1,9 +1,19 @@
 
 // const db = require("../db/queries");
 
-async function displayLogin(req, res) {
+const { validationResult } = require("express-validator");
 
-  res.render("index" );
+
+async function displayLogin(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors, "errors");
+    return res.status(400).render("index", {
+      errors: errors.array(),
+    });
+  }
+
+  res.render("index");
 
 };
 

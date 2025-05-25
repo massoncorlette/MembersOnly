@@ -48,13 +48,24 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-const authenticateUser = (req, res, next) =>
-  
+
+const { validationResult } = require("express-validator");
+
+const authenticateUser = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render("index", {
+      errors: errors.array(),
+    });
+  }
+
+  // If no validation errors, authenticate with passport
   passport.authenticate("local", {
     successRedirect: "/home",
-    failureRedirect: "/"
+    failureRedirect: "/",
   })(req, res, next);
-
+};
+  
 
 
 module.exports = authenticateUser;
