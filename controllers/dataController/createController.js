@@ -17,7 +17,7 @@ async function handleCreateUser(req, res, next) {
 
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await pool.query("insert into users (first, last, email, password) values ($1, $2, $3, $4)", [req.body.firstname, req.body.lastname, req.body.email, hashedPassword]);
+    await pool.query("insert into users (first, last, email, password) values ($1, $2, $3, $4)", [req.body.firstname, req.body.lastname, req.body.username, hashedPassword]);
     res.redirect("/");
   } catch (error) {
       console.error(error);

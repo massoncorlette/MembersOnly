@@ -4,46 +4,81 @@ const { checkEmail } = require("../db/queries");
 const alphaErr = "must only contain letters.";
 const lengthErr = "must be between 5 and 24 characters.";
 
+function validatePasswordInput() {
+  return [
+   body("password").matches(/[a-z]/)
+    .withMessage('Password must contain at least one lowercase letter')
+    .matches(/[A-Z]/)
+    .withMessage('Password must contain at least one uppercase letter')
+    .matches(/[0-9]/)
+    .withMessage('Password must contain at least one number')
+    .matches(/[^a-zA-Z0-9]/)
+    .withMessage('Password must contain at least one special character')
+  ]
+}
+
 function validateCreateUser() {
   return [
     body("firstname")
       .trim()
-      .notEmpty()
+      .notEmpty().withMessage("First name is required")
       .isAlpha("en-US", { ignore: " " })
-      .withMessage(`User first and last name ${alphaErr}`)
+      .bail()
+      .withMessage(`User first name ${alphaErr}`)
+      .bail()
       .isLength({ min: 0, max: 24 })
-      .withMessage(`User first and last name ${lengthErr}`),
+      .withMessage(`User first name ${lengthErr}`)
+      .bail(),
     body("lastname")
       .trim()
-      .notEmpty()
+      .notEmpty().withMessage("Last name is required")
+      .bail()
       .isAlpha("en-US", { ignore: " " })
-      .withMessage(`User first and last name ${alphaErr}`)
+      .withMessage(`User last name ${alphaErr}`)
+      .bail()
       .isLength({ min: 0, max: 24 })
-      .withMessage(`User first and last name ${lengthErr}`),
-    body("email")
+      .withMessage(`User last name ${lengthErr}`)
+      .bail(),
+    body("username")
       .trim()
-      .notEmpty()
+      .notEmpty().withMessage("Email is required")
+      .bail()
+      .isEmail().withMessage('Must be a valid email')
+      .bail()
       .custom(async value => {
         const user = await checkEmail(value);
         if (user) {
           throw new Error('E-mail already in use');
         }
       }),
+    ...validatePasswordInput(),
 
-    body('password').isLength({ min: 5 }),
     body('passwordconfirm').custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Passwords do not match');
+      }
       return value === req.body.password;
     }),
   ];
 }
 
 function validateUser() {
+  
   return [
+    
     body("username")
       .trim()
       .notEmpty().withMessage("Email is required")
-      .isEmail().withMessage('Must be a valid email'),
-    body('password').isLength({ min: 5 }).withMessage('Minimum 5 Letters for Password'),
+      .bail()
+      .isEmail().withMessage('Must be a valid email')
+      .bail()
+      .custom(async value => {
+        const user = await checkEmail(value);
+        if (!(user)) {
+          throw new Error('E-mail not found');
+        }
+      }),
+      ...validatePasswordInput(),
   ]
 }
 
