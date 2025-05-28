@@ -23,7 +23,12 @@ async function displayHome(req,res) {
 
 };
 
+async function displayMembersOnly(req,res) {
+  res.render(("membersonly"));
+};
+
 module.exports = {
   displayLogin, 
-  displayHome
+  displayHome,
+  displayMembersOnly
 };

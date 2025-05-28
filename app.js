@@ -16,6 +16,7 @@ app.set("view engine", "ejs");
 const indexRouter = require("./routes/index");
 const homeRouter = require("./routes/home");
 const signupRouter = require("./routes/signup");
+const membersRouter = require("./routes/membersonly");
 
 app.use(express.urlencoded({ extended: false })); // so passport can parse form data
 
@@ -38,6 +39,7 @@ app.use(passport.session());  //enables persistent login sessions
 app.use("/", indexRouter);
 app.use("/home", homeRouter);
 app.use("/sign-up", signupRouter);
+app.use("/membersonly", membersRouter);
 
 app.post("/log-out", (req, res, next) => {
   req.logout((err) => {
