@@ -33,10 +33,16 @@ async function handleCreateMessage(req, res, next) {
     });
   }
 
-  // const { user } = req.body;
-  console.log("valid");
+  try {
+    const message = req.body.usermessage;
+    const userID = req.user.user_id;
+    await pool.query("insert into membermessages (message,user_id) values ($1, $2)", [message,userID]);
+    res.redirect("home");
+  } catch (error) {
+      console.error(error);
+      next(error);
+    }
   };
-  
 
 
 

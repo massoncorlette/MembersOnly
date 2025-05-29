@@ -19,6 +19,15 @@
       </button> 
     </a>
   </div>
+  <div>
+    <% if (messages) {%>
+      <ul>
+        <% messages.forEach(function(message) { %>
+          <li><%= message.message %></li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </div>
 
 </div>
 

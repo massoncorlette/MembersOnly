@@ -15,7 +15,8 @@ messageRouter.get("/", (req, res, next) => {
   return displayMessageBox(req,res,next);
 });
 
-messageRouter.post("/submit-msg", validateCreateMessage(), handleCreateMessage); 
+
+messageRouter.post("/", validateCreateMessage(), handleCreateMessage); 
 
 module.exports = messageRouter;
 

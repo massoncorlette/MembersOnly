@@ -84,11 +84,11 @@ function validateUser() {
 
 function validateCreateMessage() {
   return [
-    body("username")
+    body("usermessage")
     .trim()
-    .notEmpty().withMessage("Email is required")
+    .notEmpty().withMessage("Can't Submit Empty Message")
     .bail()
-    .isLength({ min: 0, max: 1000 }).withMessage("100 Character Limit")
+    .isLength({ min: 0, max: 1000 }).withMessage("1000 Character Limit")
     .bail()
   ]
 }

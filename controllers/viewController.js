@@ -3,6 +3,8 @@
 
 const { validationResult } = require("express-validator");
 
+const db = require("../db/queries");
+
 
 async function displayLogin(req, res) {
   const errors = validationResult(req);
@@ -19,7 +21,9 @@ async function displayLogin(req, res) {
 
 async function displayHome(req,res) {
 
-  res.render(("home") , {user: req.user});
+  const messages = await db.getAllMessages();
+
+  res.render(("home") , {user: req.user, messages:messages});
 
 };
 

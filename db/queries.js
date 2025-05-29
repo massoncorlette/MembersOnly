@@ -1,16 +1,25 @@
 const pool = require("./pool");
 
 
-async function checkEmail(value) {
+async function getAllMessages() {
 
-  
+  const result = await pool.query(
+    "SELECT * FROM membermessages"
+  );
+
+  if (result.rows.length !== 0) {
+    return result.rows;
+  } else {
+    return false;
+  }
+};
+
+async function checkEmail(value) {
 
   const user = await pool.query(
     "SELECT * FROM users WHERE email = $1",
     [`${value}`],
   );
-
-  console.log(user, "check");
 
   if (user.rows.length !== 0) {
     return true;
@@ -20,5 +29,6 @@ async function checkEmail(value) {
 };
 
 module.exports = {
+  getAllMessages,
   checkEmail
 }
