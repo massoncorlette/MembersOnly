@@ -3,7 +3,7 @@
   <%- include('partials/header.ejs') %>
 <body>
   <% if (locals.user) {%>
-    <%- include("/partials/header.ejs") %>
+    <%- include('home.ejs') %>
   <% } else { %>
     <h1>please log in</h1>
     <% if (locals.errors) {%>
@@ -24,5 +24,15 @@
       <button> Sign Up !</button>
     </a>
   <%}%>
+  <div>
+    <% if (message) {%>
+      <div>
+        <div>Most Recent Added Message: </div>
+        <div>
+          <%= message.message %>
+        </div>
+      </div>
+    <% } %>
+  </div>
 </body>
 </html>

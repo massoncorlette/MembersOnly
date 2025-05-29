@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('partials/header.ejs') %>
-  <% console.log(user) %>
 <body>
-    <form>
+    <form action="/membersonly" method="POST">
       <label for="code">Become a Member and enter the <i>Secret Code</i></label>
       <input id="code" name="passcode" placeholder="Enter Code" type="text" />
       <button type="submit">Enter</button>

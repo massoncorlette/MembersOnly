@@ -7,6 +7,8 @@ const db = require("../db/queries");
 
 
 async function displayLogin(req, res) {
+  const messages = await db.getAllMessages();
+  const lastMessage = messages.pop();
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     console.log(errors, "errors");
@@ -15,7 +17,7 @@ async function displayLogin(req, res) {
     });
   }
 
-  res.render("index");
+  res.render(("index"),{message:lastMessage});
 
 };
 

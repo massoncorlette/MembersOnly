@@ -60,7 +60,7 @@ function validateCreateUser() {
       return value === req.body.password;
     }),
   ];
-}
+};
 
 function validateUser() {
   
@@ -80,7 +80,7 @@ function validateUser() {
       }),
       ...validatePasswordInput(),
   ]
-}
+};
 
 function validateCreateMessage() {
   return [
@@ -91,10 +91,23 @@ function validateCreateMessage() {
     .isLength({ min: 0, max: 1000 }).withMessage("1000 Character Limit")
     .bail()
   ]
-}
+};
+
+function validateSecret(req,res,next) {
+  const storedSecret = "SecretPassword";
+  const secret = req.body.passcode;
+  if (secret == storedSecret) {
+    console.log("true");
+    return true;
+  } else {
+    return false;
+  }
+
+};
 
 module.exports = {
    validateCreateUser,
    validateUser,
-   validateCreateMessage
+   validateCreateMessage,
+   validateSecret
 }
