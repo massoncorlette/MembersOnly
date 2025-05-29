@@ -82,7 +82,19 @@ function validateUser() {
   ]
 }
 
+function validateCreateMessage() {
+  return [
+    body("username")
+    .trim()
+    .notEmpty().withMessage("Email is required")
+    .bail()
+    .isLength({ min: 0, max: 1000 }).withMessage("100 Character Limit")
+    .bail()
+  ]
+}
+
 module.exports = {
    validateCreateUser,
-   validateUser
+   validateUser,
+   validateCreateMessage
 }

@@ -9,3 +9,5 @@ membersRouter.get("/", (req, res, next) => {
   return displayMembersOnly(req,res,next);
 });
 
+module.exports = membersRouter;
+

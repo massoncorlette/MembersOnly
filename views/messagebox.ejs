@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/header.ejs') %>
+<body>
+  <h1>Send Message As <%= currentUser.first %></h1>
+  <div>
+    <form action="/submit-msg" method="POST">
+      <label for="submit-msg">Add a Message</label>
+      <textarea for="submit-msg" placeholder="Enter a message." name="usermessage"></textarea>
+      <button type="submit">Submit Message</button>
+    </form>
+  </div>
+</body>
+</html>

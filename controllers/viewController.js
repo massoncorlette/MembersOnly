@@ -23,6 +23,10 @@ async function displayHome(req,res) {
 
 };
 
+async function displayMessageBox(req,res) {
+  res.render(("messagebox"), {user: req.user});
+};
+
 async function displayMembersOnly(req,res) {
   res.render(("membersonly"));
 };
@@ -30,5 +34,6 @@ async function displayMembersOnly(req,res) {
 module.exports = {
   displayLogin, 
   displayHome,
+  displayMessageBox,
   displayMembersOnly
 };

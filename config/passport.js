@@ -10,7 +10,6 @@ passport.use(
       const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [username]);
       const user = rows[0];
 
-      console.log(user, "passport yo");
 
       if (!user) {
         return done(null, false, { message: "Incorrect email" });
@@ -32,7 +31,6 @@ passport.use(
 
 
 passport.serializeUser((user, done) => {
-  console.log("serialize");
   done(null, user.user_id);
 });
 

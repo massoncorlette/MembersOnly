@@ -17,6 +17,7 @@ const indexRouter = require("./routes/index");
 const homeRouter = require("./routes/home");
 const signupRouter = require("./routes/signup");
 const membersRouter = require("./routes/membersonly");
+const messageRouter = require("./routes/messageboard");
 
 app.use(express.urlencoded({ extended: false })); // so passport can parse form data
 
@@ -40,8 +41,10 @@ app.use("/", indexRouter);
 app.use("/home", homeRouter);
 app.use("/sign-up", signupRouter);
 app.use("/membersonly", membersRouter);
+app.use("/messagebox", messageRouter);
 
 app.post("/log-out", (req, res, next) => {
+  console.log("log out");
   req.logout((err) => {
     if (err) {
       return next(err);
