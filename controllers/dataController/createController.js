@@ -13,8 +13,6 @@ if (!errors.isEmpty()) {
   });
 }
 
-// const { user } = req.body;
-
 try {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
   await pool.query("insert into users (first, last, email, password) values ($1, $2, $3, $4)", [req.body.firstname, req.body.lastname, req.body.username, hashedPassword]);
@@ -48,9 +46,6 @@ async function handleCreateMessage(req, res, next) {
   const stringDate = formattedDate.toString();
   const stringTime = formattedTime.toString();
 
-  console.log(formattedDate, formattedTime);
-
-
   try {
     const message = req.body.usermessage;
     const userID = req.user.user_id;
@@ -62,9 +57,7 @@ async function handleCreateMessage(req, res, next) {
     }
   };
 
-
-
 module.exports = {
   handleCreateUser,
   handleCreateMessage
-}
+};
