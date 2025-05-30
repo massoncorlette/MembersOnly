@@ -32,6 +32,11 @@ async function handleCreateMessage(req, res, next) {
       errors: errors.array(),
     });
   }
+  
+  const now = new Date();
+
+  console.log(now);
+
 
   try {
     const message = req.body.usermessage;

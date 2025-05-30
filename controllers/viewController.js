@@ -8,7 +8,11 @@ const db = require("../db/queries");
 
 async function displayLogin(req, res) {
   const messages = await db.getAllMessages();
-  const lastMessage = messages.pop();
+  let lastMessage = null;
+
+  if (messages) {
+    lastMessage = messages.pop();
+  }
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     console.log(errors, "errors");
