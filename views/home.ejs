@@ -24,10 +24,9 @@
       <ul>
         <% messages.forEach(function(message) { %>
           <% if (currentUser.is_member) { %>
-            <% console.log( currentUser) %>
-            <li><%= message.addeddate %><%= message.message %><%= message.addedtime %></li>
+            <li><%= message.date %><%= message.message %><%= message.time %></li>
          <% } else { %> 
-          <li><%= message.addeddate %> </li>
+          <li><%= message.message %> </li>
        <% } %>
         <% }); %>
       </ul>

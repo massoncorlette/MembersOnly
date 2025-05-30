@@ -18,13 +18,15 @@ async function getMessagesInfo() {
 
   const allMessages = await getAllMessages();
 
-  const results = await allMessages.map((message) => {
-    const user = pool.query("SELECT first FROM users WHERE user_id = $1",
+  const results = await allMessages.map(async (message) => {
+    const user = await pool.query("SELECT first FROM users WHERE user_id = $1",
       [message.user_id]
     );
 
     return {
       message:message.message,
+      date:message.addeddate,
+      time:message.addedtime,
       user:user
     };
   
