@@ -2,11 +2,18 @@
 <html lang="en">
   <%- include('partials/header.ejs') %>
 <body>
-  <h1>Send Message As <%= currentUser.first %></h1>
-  <div>
+  <h1>Send a Message <%= currentUser.first %></h1>
+  <div id="formContainer">
     <form action="/messagebox" method="POST">
-      <label for="submit-msg">Add a Message</label>
-      <textarea name="usermessage" placeholder="Enter a message." ></textarea>
+      <fieldset>
+        <legend>Add an epic message</legend>
+        <div class="formEntries">
+          <input placeholder="Enter Message Title" type="text" id="title" name="title" required><br>
+        </div>
+        <div class="formEntries">
+          <textarea  placeholder="Enter a message." id="usermessage" name="usermessage" required></textarea>
+        </div>
+      </fieldset>
       <button type="submit">Submit Message</button>
     </form>
   </div>

@@ -33,15 +33,28 @@ async function handleCreateMessage(req, res, next) {
     });
   }
   
+  // creating Date obj, turning to Locale format, then converting to string to store in VARCHAR in sql table 
   const now = new Date();
 
-  console.log(now);
+  const timeOptions = {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  };
+
+  const formattedDate = now.toLocaleDateString("en-US");
+  const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
+
+  const stringDate = formattedDate.toString();
+  const stringTime = formattedTime.toString();
+
+  console.log(formattedDate, formattedTime);
 
 
   try {
     const message = req.body.usermessage;
     const userID = req.user.user_id;
-    await pool.query("insert into membermessages (message,user_id) values ($1, $2)", [message,userID]);
+    await pool.query("insert into membermessages (message, addedDate, addedTime, user_id) values ($1, $2, $3, $4)", [message,stringDate,stringTime,userID]);
     res.redirect("home");
   } catch (error) {
       console.error(error);

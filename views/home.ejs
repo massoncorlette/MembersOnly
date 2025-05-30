@@ -23,7 +23,8 @@
     <% if (messages) {%>
       <ul>
         <% messages.forEach(function(message) { %>
-          <li><%= message.message %></li>
+          <%= console.log(message) %>
+          <li><%= message.addeddate %><%= message.message %><%= message.addedtime %></li>
         <% }); %>
       </ul>
     <% } %>

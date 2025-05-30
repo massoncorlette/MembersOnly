@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS membermessages (
   message_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title VARCHAR ( 24 ),
   message VARCHAR ( 2000 ),
-  addedDate DATE,
-  addedTime TIME,
+  addedDate VARCHAR,
+  addedTime VARCHAR,
   user_id INTEGER,
   FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
