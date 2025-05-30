@@ -14,6 +14,24 @@ async function getAllMessages() {
   }
 };
 
+async function getMessagesInfo() {
+
+  const allMessages = await getAllMessages();
+
+  const results = await allMessages.map((message) => {
+    const user = pool.query("SELECT first FROM users WHERE user_id = $1",
+      [message.user_id]
+    );
+
+    return {
+      message:message.message,
+      user:user
+    };
+  
+  });
+  return results;
+};
+
 async function checkEmail(value) {
 
   const user = await pool.query(
@@ -30,5 +48,6 @@ async function checkEmail(value) {
 
 module.exports = {
   getAllMessages,
+  getMessagesInfo,
   checkEmail
 }

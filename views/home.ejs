@@ -20,10 +20,11 @@
     </a>
   </div>
   <div>
-    <% if (messages) {%>
+    <% if (locals.messages) {%>
       <ul>
         <% messages.forEach(function(message) { %>
           <% if (currentUser.is_member) { %>
+            <% console.log( currentUser) %>
             <li><%= message.addeddate %><%= message.message %><%= message.addedtime %></li>
          <% } else { %> 
           <li><%= message.addeddate %> </li>

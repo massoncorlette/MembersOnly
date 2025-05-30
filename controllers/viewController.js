@@ -26,9 +26,11 @@ async function displayLogin(req, res) {
 
 async function displayHome(req,res) {
 
-  const messages = await db.getAllMessages();
+  const messages = await db.getMessagesInfo();
 
-  res.render(("home") , {user: req.user, messages:messages});
+  console.log(messages);
+
+  res.render(("home") , {user: req.user, messages:messages, getMessageAuthor: db.getMessageAuthor});
 
 };
 
