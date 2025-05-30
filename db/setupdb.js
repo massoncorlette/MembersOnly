@@ -14,11 +14,14 @@ CREATE TABLE IF NOT EXISTS users (
   first VARCHAR ( 20 ),
   last VARCHAR ( 20 ),
   email VARCHAR ( 255 ),
-  password VARCHAR ( 255 )
-);
+  password VARCHAR ( 255 ),
+  is_member BOOLEAN DEFAULT FALSE,
+  is_admin BOOLEAN DEFAULT FALSE
+  );
 
 CREATE TABLE IF NOT EXISTS membermessages (
   message_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR ( 24 ).
   message VARCHAR ( 2000 ),
   user_id INTEGER,
   FOREIGN KEY (user_id) REFERENCES users (user_id)

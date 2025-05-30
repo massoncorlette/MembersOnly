@@ -38,6 +38,12 @@ app.use(passport.initialize());  //initializes Passport
 app.use(passport.session());  //enables persistent login sessions
 
 app.use("/", indexRouter);
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use("/home", homeRouter);
 app.use("/sign-up", signupRouter);
 app.use("/membersonly", membersRouter);

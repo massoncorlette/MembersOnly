@@ -18,7 +18,6 @@ async function displayLogin(req, res) {
   }
 
   res.render(("index"),{message:lastMessage});
-
 };
 
 async function displayHome(req,res) {

@@ -7,5 +7,10 @@
       <input id="code" name="passcode" placeholder="Enter Code" type="text" />
       <button type="submit">Enter</button>
     </form>
+    <% if (error) {%>
+      <div>
+        <%= error %>
+      </div>
+    <% } %>
 </body>
 </html>

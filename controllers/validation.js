@@ -95,8 +95,8 @@ function validateCreateMessage() {
 
 function validateSecret(req,res,next) {
   const storedSecret = "SecretPassword";
-  const secret = req.body.passcode;
-  if (secret == storedSecret) {
+  const { passcode } = req.body;
+  if (passcode == storedSecret) {
     console.log("true");
     return true;
   } else {
