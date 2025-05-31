@@ -12,9 +12,7 @@ async function handleDeleteMessage(req, res, next) {
     console.error(error);
     next(error);
   }
-
-
-}
+};
 
 module.exports = {
   handleDeleteMessage
