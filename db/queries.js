@@ -27,11 +27,17 @@ async function getMessagesInfo() {
       message:message.message,
       date:message.addeddate,
       time:message.addedtime,
-      user:user
+      user:user.rows[0].first
     };
-  
+
   });
-  return results;
+
+  const resolvedResults = Promise.all(results).then((values) => {
+    console.log(values, "values");
+    return values; 
+  });
+
+  return resolvedResults;
 };
 
 async function checkEmail(value) {

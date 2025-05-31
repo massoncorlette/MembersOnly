@@ -24,7 +24,7 @@
       <ul>
         <% messages.forEach(function(message) { %>
           <% if (currentUser.is_member) { %>
-            <li><%= message.date %><%= message.message %><%= message.time %></li>
+            <li><%= message.user %><%= message.date %><%= message.message %><%= message.time %></li>
          <% } else { %> 
           <li><%= message.message %> </li>
        <% } %>
