@@ -93,8 +93,8 @@ function validateCreateMessage() {
   ]
 };
 
-function validateSecret(req,res,next) {
-  const storedSecret = "SecretPassword";
+function validateSecret(req,res,next,secret) {
+  const storedSecret = secret;
   const { passcode } = req.body;
   if (passcode == storedSecret) {
     console.log("true");
@@ -102,7 +102,6 @@ function validateSecret(req,res,next) {
   } else {
     return false;
   }
-
 };
 
 module.exports = {

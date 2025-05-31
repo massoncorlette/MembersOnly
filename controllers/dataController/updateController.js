@@ -6,7 +6,7 @@ async function handleUpdateUserMembership(req, res, next) {
 
   const user = res.locals.currentUser;
 
-  if (validateSecret(req, res, next)) {
+  if (validateSecret(req, res, next, "SecretPasscode")) {
     try {
       await pool.query("UPDATE users SET is_member = $1 WHERE user_id = $2", [true, user.user_id]);
       res.redirect("/home");
@@ -23,7 +23,21 @@ async function handleUpdateUserMembership(req, res, next) {
 
 
 async function handleUpdateUserAdmin(req, res, next) {
-   // do last
+  const user = res.locals.currentUser;
+
+  if (validateSecret(req, res, next, "OtherSecret")) {
+    try {
+      await pool.query("UPDATE users SET is_admin = $1 WHERE user_id = $2", [true, user.user_id]);
+      res.redirect("/home");
+    } catch (error) {
+        console.error(error);
+        next(error);
+      }
+  } else {
+    return res.status(400).render("membersonly", {
+      error: "Incorrect Secret Code!",
+    });
+  }
 };
   
 

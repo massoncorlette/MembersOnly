@@ -24,7 +24,15 @@
       <ul>
         <% messages.forEach(function(message) { %>
           <% if (currentUser.is_member) { %>
-            <li><%= message.user %><%= message.date %><%= message.message %><%= message.time %></li>
+            <li><%= message.user %><%= message.date %><%= message.message %><%= message.time %>
+            <% if (currentUser.is_admin) { %>
+              <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
+                <button>
+                  Delete Message
+                </button>
+              </form>
+           <% } %>
+            </li>
          <% } else { %> 
           <li><%= message.message %> </li>
        <% } %>

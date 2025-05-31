@@ -25,6 +25,7 @@ async function getMessagesInfo() {
 
     return {
       message:message.message,
+      message_id: message.message_id,
       date:message.addeddate,
       time:message.addedtime,
       user:user.rows[0].first

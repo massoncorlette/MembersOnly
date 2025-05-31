@@ -30,7 +30,7 @@ async function displayHome(req,res) {
 
   console.log(messages);
 
-  res.render(("home") , {user: req.user, messages:messages, getMessageAuthor: db.getMessageAuthor});
+  res.render(("home") , {messages:messages});
 
 };
 

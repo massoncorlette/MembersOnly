@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const express = require("express");
 const { displayMembersOnly } = require("../controllers/viewController");
-const { handleUpdateUserMembership } = require("../controllers/dataController/updateController");
+const { handleUpdateUserMembership, handleUpdateUserAdmin } = require("../controllers/dataController/updateController");
 require('dotenv').config();
 
 
@@ -12,7 +12,9 @@ membersRouter.get("/", (req, res, next) => {
   return displayMembersOnly(req,res,next);
 });
 
-membersRouter.post("/", handleUpdateUserMembership)
+membersRouter.post("/", handleUpdateUserMembership);
+
+membersRouter.post("/adminsonly", handleUpdateUserAdmin);
 
 module.exports = membersRouter;
 
