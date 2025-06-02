@@ -2,30 +2,40 @@
 <html lang="en">
   <%- include('partials/header.ejs') %>
 <body>
+<div id="main">
   <% if (locals.user) {%>
     <%- include('home.ejs') %>
   <% } else { %>
-    <h1>please log in</h1>
+    <h1>Members Only Club.</h1>
     <% if (locals.errors) {%>
       <ul>
+        <% if (locals.errorMsg) {%> 
+          <li><%= locals.errorMsg %></li> <% }%>
         <% errors.forEach(function(error) { %>
           <li><%= error.msg %></li>
         <% }); %>
       </ul>
     <% } %>
-    <form action="/" method="POST">
-      <label for="email">Email</label>
-      <input id="email" name="username" placeholder="Enter Email" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <button type="submit">Log In</button>
-    </form>
-    <a href="/sign-up"> 
-      <button> Sign Up !</button>
-    </a>
-    <div>
 
+    <div id="loginForm">
+      <form action="/" method="POST">
+        <div>
+          <input id="email" name="username" placeholder="Enter Email" type="text" />
+        </div>
+        <div>
+          <input id="password" name="password" type="password" />
+        </div>
+        <div class="formBtns">
+          <button type="submit">Log In</button>
+        </div>
+      </form>
+        <div class="formBtns">
+          <a href="/sign-up"> 
+            <button> Sign Up !</button>
+          </a>
+        </div>
     </div>
+
   <%}%>
   <div>
     <% if (locals.message) {%>
@@ -37,5 +47,6 @@
       </div>
     <% } %>
   </div>
+</div>
 </body>
 </html>

@@ -18,7 +18,8 @@ async function getMessagesInfo() {
 
   const allMessages = await getAllMessages();
 
-  const results = await allMessages.map(async (message) => {
+  if (allMessages) {
+    const results = await allMessages.map(async (message) => {
     const user = await pool.query("SELECT first FROM users WHERE user_id = $1",
       [message.user_id]
     );
@@ -39,6 +40,8 @@ async function getMessagesInfo() {
   });
 
   return resolvedResults;
+  }
+
 };
 
 async function checkEmail(value) {

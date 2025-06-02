@@ -36,7 +36,15 @@
            <% } %>
             </li>
          <% } else { %> 
-          <li><%= message.message %> </li>
+          <li><%= message.message %> 
+             <% if (currentUser.is_admin) { %>
+              <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
+                <button>
+                  Delete Message
+                </button>
+              </form>
+           <% } %>         
+          </li>
        <% } %>
         <% }); %>
       </ul>

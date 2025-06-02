@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../db/pool');
 
+
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
@@ -21,7 +22,7 @@ passport.use(
         // passwords do not match!
         return done(null, false, { message: "Incorrect password" })
       }
-      
+
       return done(null, user);
     } catch(err) {
       return done(err);
@@ -51,11 +52,16 @@ const { validationResult } = require("express-validator");
 
 const authenticateUser = (req, res, next) => {
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
+    res.locals.errorMsg = "Wrong email or password.";
+
     return res.status(400).render("index", {
       errors: errors.array(),
     });
-  }
+  };
+
+
 
   // If no validation errors, authenticate with passport
   passport.authenticate("local", {

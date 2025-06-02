@@ -1,5 +1,5 @@
 * {
-  border: solid rgba(255, 255, 255, 0) 1px;
+  border: solid rgba(255, 0, 0, 0) 1px;
 }
 
 body {
@@ -7,4 +7,20 @@ body {
   min-height: 100vh;
   background-color: rgb(41, 41, 41);
   color: whitesmoke;
+  display: flex;
 }
+
+#main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+ }
+
+ .formBtns {
+  display: flex;
+  justify-content: center;
+ }
+
