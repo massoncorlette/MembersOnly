@@ -2,26 +2,27 @@
 <html lang="en">
   <%- include('partials/header.ejs') %>
 <body>
-  <h1>Sign Up</h1>
-  <% if (locals.errors) {%>
-    <ul>
-      <% errors.forEach(function(error) { %>
-        <li><%= error.msg %></li>
-      <% }); %>
-    </ul>
-  <% } %>
-  <form action="/sign-up" method="POST">
-    <label for="firstname">First</label>
-    <input id="firstname" name="firstname" placeholder="firstname" type="text" />
-    <label for="lastname">Last</label>
-    <input id="lastname" name="lastname" placeholder="lastname" type="text" />
-    <label for="email">Email</label>
-    <input id="email" name="username" placeholder="email" type="email" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <label for="passwordconfirm">Confirm Password</label>
-    <input id="passwordconfirm" name="passwordconfirm" type="password" />
-    <button type="submit">Sign Up</button>
-  </form>
+  <div id="main">
+    <h1>Sign Up for Members Only Club</h1>
+    <% if (locals.errors) {%>
+      <ul>
+        <% errors.forEach(function(error) { %>
+          <li><%= error.msg %></li>
+        <% }); %>
+      </ul>
+    <% } %>
+    <form action="/sign-up" method="POST" id="signupForm" autocomplete="off">
+      <input id="firstname" class="signupInput" name="firstname" autocomplete="off" placeholder="First Name" type="text" />
+      <input id="lastname" class="signupInput" name="lastname" autocomplete="off" placeholder="Last Name" type="text" />
+      <input id="email" class="signupInput"  name="username" autocomplete="off" placeholder="Email" type="email" />
+      <input id="password" class="signupInput"  name="password" type="password" placeholder="Password" />
+      <input id="passwordconfirm" class="signupInput"  name="passwordconfirm" type="password" placeholder="Repeat Password" />
+      <button type="submit" id="signupBtn">Sign Up</button>
+      <a href="/">
+         Go Back
+      </a>
+    </form>
+  </div>
+
 </body>
 </html>

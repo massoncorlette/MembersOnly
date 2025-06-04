@@ -8,12 +8,16 @@ function validatePasswordInput() {
   return [
    body("password").matches(/[a-z]/)
     .withMessage('Password must contain at least one lowercase letter')
-    .matches(/[A-Z]/)
+    .bail()
+    .matches(/[A-Z]/).bail()
     .withMessage('Password must contain at least one uppercase letter')
+    .bail()
     .matches(/[0-9]/)
     .withMessage('Password must contain at least one number')
+    .bail()
     .matches(/[^a-zA-Z0-9]/)
     .withMessage('Password must contain at least one special character')
+    .bail()
   ]
 }
 
@@ -21,9 +25,10 @@ function validateCreateUser() {
   return [
     body("firstname")
       .trim()
-      .notEmpty().withMessage("First name is required")
-      .isAlpha("en-US", { ignore: " " })
+      .notEmpty()
+      .withMessage("First name is required")
       .bail()
+      .isAlpha("en-US", { ignore: " " })
       .withMessage(`User first name ${alphaErr}`)
       .bail()
       .isLength({ min: 0, max: 24 })

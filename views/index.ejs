@@ -8,7 +8,7 @@
   <% } else { %>
     <h1>Members Only Club.</h1>
     <% if (locals.errors) {%>
-      <ul>
+      <ul id="errorsContainer">
         <% if (locals.errorMsg) {%> 
           <li><%= locals.errorMsg %></li> <% }%>
         <% errors.forEach(function(error) { %>
@@ -17,19 +17,22 @@
       </ul>
     <% } %>
 
-    <div id="loginForm">
-      <form action="/" method="POST">
-        <div>
-          <input id="email" name="username" placeholder="Enter Email" type="text" />
+    <div id="loginForm"  >
+      <form action="/" method="POST" id="loginFormInput" autocomplete="off">
+        <div class="loginInput">
+          <input id="email" name="username" autocomplete="off" placeholder="Enter Email" type="text" />
         </div>
-        <div>
-          <input id="password" name="password" type="password" />
+        <div class="loginInput">
+          <input id="password" name="password"  autocomplete="new-password" placeholder="Enter Password" type ="password" />
         </div>
         <div class="formBtns">
-          <button type="submit">Log In</button>
+          <button type="submit" id="loginBtn">Log In</button>
         </div>
       </form>
-        <div class="formBtns">
+        <div class="formBtns" id="signUp">
+          <div >
+            Not a member? 
+          </div>
           <a href="/sign-up"> 
             <button> Sign Up !</button>
           </a>
@@ -37,12 +40,12 @@
     </div>
 
   <%}%>
-  <div>
+  <div id="recentMsgContainer">
     <% if (locals.message) {%>
-      <div>
-        <div>Most Recent Added Message: </div>
-        <div>
-          <%= message.message %>
+      <div id="recentMsg">
+        <div id="recentMsgTxt">Most recently added Message: </div>
+        <div id="newMsgContainer">
+          <div> <%= message.message %> </div>
         </div>
       </div>
     <% } %>

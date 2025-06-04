@@ -1,6 +1,8 @@
 # AuthenticationPractice
 
-For this project I am setting up users on postegre hashing passwords with bycrypt. Using routes to pass passport module using passport local strategy to authenticate users upon req on login submissions. Using express-session to maintain a state between backend to keep users logged in on new req or server crashes, enhancing security. 
+For this project I am setting up users on PostgreSQL hashing passwords with bycrypt. Using routes to pass passport module using passport local strategy to authenticate users upon req on login submissions. Using express-session to maintain a state between backend to keep users logged in on new req or server crashes, enhancing security. 
+
+Using the req.user that is deserialized we can set is_admin or is_member properties for that user to true if the correct passwords are inputted, this taking advantage of express-session.
 
 For my login and signup I am first validating input, while sanitizing with validation chain. In (config/passport.js) the authenticateUser function will express any errors from validation chain. If there are none, passport.authenticate local strategy proceeds.
 NOTE: I could also use this function as a callback to the login  to render out more error messages from local passport in future projects.
