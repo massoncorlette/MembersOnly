@@ -1,55 +1,68 @@
 <%- include('partials/header.ejs') %>
 
-<div>
-  <h1>WELCOME BACK <%= currentUser.first %></h1>
-  <form action="/log-out" method="POST">
-    <button type="submit">
-      LOG OUT
-    </button>
-  </form>
-  <div>
-    <a href="/membersonly">
-      <button>
-        Members Club
-      </button> 
-    </a>
-  </div>
-  <div>
-    <a href="/messagebox">
-      <button>
-        Message Box
-      </button> 
-    </a>
-  </div>
-  <div>
-    <% if (locals.messages) {%>
-      <ul>
-        <% messages.forEach(function(message) { %>
-          <% if (currentUser.is_member) { %>
-            <li><%= message.user %><%= message.date %><%= message.message %><%= message.time %>
-            <% if (currentUser.is_admin) { %>
-              <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
-                <button>
-                  Delete Message
-                </button>
-              </form>
-           <% } %>
-            </li>
-         <% } else { %> 
-          <li><%= message.message %> 
-             <% if (currentUser.is_admin) { %>
-              <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
-                <button>
-                  Delete Message
-                </button>
-              </form>
-           <% } %>         
-          </li>
-       <% } %>
-        <% }); %>
-      </ul>
-    <% } %>
-  </div>
+<div id="main">
+  <div id="mainBody">
+    <h1 id="greeting">Welcome Back, <%= currentUser.first %></h1>
+    <form action="/log-out" method="POST" id="logoutForm">
+      <button type="submit">
+        LOG OUT
+      </button>
+    </form>
+    <div class="homeLinks">
+      <a href="/membersonly">
+        <button>
+          Members Club
+        </button> 
+      </a>
+      <img src="/crown.svg"/>
 
+    </div>
+    <div class="homeLinks">
+      <a href="/messagebox">
+        <button>
+          Message Box
+        </button> 
+      </a>
+     <img src="/message.svg"/>
+    </div>
+    <div id="messagesContainer">
+      <% if (locals.messages) {%>
+        <ul>
+          <% messages.forEach(function(message) { %>
+            <% if (currentUser.is_member) { %>
+              <li class="messageContent">
+                <div id="messageContentDate"><%= message.date %></div>
+                <div id="messageContentUserMsg">
+                  <div id="userTxt"><%= message.user %></div>: <%= message.message %>
+                </div>
+                <div id="messageContentTimeDelete">
+                  <div id="messageContentTime"><%= message.time %></div>
+                  <% if (currentUser.is_admin) { %>
+                    <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
+                      <button>
+                        Delete Message
+                      </button>
+                    </form>
+                <% } %>
+                </div>
+              </li>
+          <% } else { %> 
+            <li><%= message.message %> 
+              <% if (currentUser.is_admin) { %>
+                <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
+                  <button>
+                    Delete Message
+                  </button>
+                </form>
+            <% } %>         
+            </li>
+        <% } %>
+          <% }); %>
+        </ul>
+      <% } %>
+    </div>
+  </div>
 </div>
+<script src="/helpers.js"></script>
+
 

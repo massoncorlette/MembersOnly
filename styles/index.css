@@ -1,5 +1,5 @@
 * {
-  border: solid rgba(255, 69, 69, 0) 1px;
+  border: solid rgba(255, 33, 33, 0) 1px;
 }
 
 :root {
@@ -30,6 +30,53 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 1rem;
+ }
+
+ #mainBody {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+ }
+
+ #messagesContainer {
+  border-top: solid var(--secondary-color) 1px;
+  flex: 1;
+  display: flex;
+ }
+
+ #messagesContainer ul {
+  list-style: none;
+  flex: 1;
+  padding: 0%;
+ }
+
+ #messageContentUserMsg {
+  display: flex;
+ }
+
+ #userTxt {
+  font-weight: 700;
+ }
+
+ #messageContentTime {
+  font-size: 0.8rem;
+  font-style: italic;
+ }
+
+ #userTxt {
+  font-weight: 700;
+ }
+
+ .light {
+  background-color: var(--primary-color-light);
+ }
+
+ .dark {
+  background-color: var(--primary-color-alt);
  }
 
  #loginForm , #signupForm {
@@ -50,10 +97,34 @@ a {
   padding: 4%;
  }
 
+ #logoutForm {
+  display: flex;
+  justify-content: flex-end;
+ }
+
  h1 {
   width: 50%;
   display: flex;
-  justify-content: center;
+  border-bottom: solid var(--primary-color-light) 1px;
+  font-style:  italic;
+ }
+
+ #greeting {
+  font-size: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: solid var(--primary-color-light) 1px;
+ }
+
+ .homeLinks {
+  display: flex;
+  align-items: center;
+ }
+
+ .homeLinks a button {
+  font-size: 1rem;
+  font-weight: 700;
  }
 
  #loginForm form {
@@ -151,9 +222,10 @@ a {
 
  #errorsContainer {
   width: 50%;
-  margin: 0%;
   color: var(--error-color);
   font-weight: 700;
+  border-bottom: solid var(--primary-color-light) 1px;
+
  }
 
  button {
@@ -168,11 +240,11 @@ a {
  /* Tablet */
 @media (max-width: 80em) { 
 
-  h1, #loginBtn, #signUp {
+  h1, #greeting, #loginBtn, #signUp {
     font-size: 1rem;
   }
 
-  body, input {
+  body, input, button, .messageContent, .homeLinks a button {
     font-size: 0.8rem;
   }
 

@@ -3,9 +3,9 @@
   <%- include('partials/header.ejs') %>
 <body>
   <div id="main">
-    <h1>Sign Up for Members Only Club</h1>
+    <h1>Sign Up for Entry</h1>
     <% if (locals.errors) {%>
-      <ul>
+      <ul id="errorsContainer">
         <% errors.forEach(function(error) { %>
           <li><%= error.msg %></li>
         <% }); %>
