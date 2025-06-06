@@ -48,6 +48,10 @@ a {
   display: flex;
  }
 
+ ul {
+  margin: 0%;
+ }
+
  #messagesContainer ul {
   list-style: none;
   flex: 1;
@@ -58,8 +62,10 @@ a {
   display: flex;
  }
 
- #userTxt {
+ .userTxt {
   font-weight: 700;
+  padding: 10px;
+  border-radius: 10px;
  }
 
  #messageContentTime {
@@ -67,16 +73,12 @@ a {
   font-style: italic;
  }
 
- #userTxt {
-  font-weight: 700;
- }
-
  .light {
   background-color: var(--primary-color-light);
  }
 
  .dark {
-  background-color: var(--primary-color-alt);
+  background-color: var(--primary-color);
  }
 
  #loginForm , #signupForm {
@@ -123,8 +125,28 @@ a {
  }
 
  .homeLinks a button {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
+ }
+
+ .messageContent {
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+ }
+
+ #messageContainer {
+  flex: 4;
+ }
+
+ #messageContentTimeDelete {
+  flex: 1;
+ }
+
+ #messageContentTimeDelete form{
+  display: flex;
+  justify-content: flex-end;
+
  }
 
  #loginForm form {
@@ -228,6 +250,23 @@ a {
 
  }
 
+ #membersonlyContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+ }
+
+.formContainer {
+  width: 50%;
+  font-size: 1.2rem;
+}
+
+
+
+
  button {
   background-color: transparent;
   color: var(--secondary-color);
@@ -248,6 +287,10 @@ a {
     font-size: 0.8rem;
   }
 
+  label {
+    font-size: smaller;
+  }
+
   #loginForm form {
   width: 100%;
   height: 60%;
@@ -255,6 +298,14 @@ a {
   flex-direction: column;
  }
 
+ #loginForm {
+  padding: 2%;
+  width: 80%;
+ }
+
+  #recentMsgContainer, h1, #signupForm {
+    width: 80%;
+  }
 
 }
 

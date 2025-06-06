@@ -31,15 +31,18 @@
           <% messages.forEach(function(message) { %>
             <% if (currentUser.is_member) { %>
               <li class="messageContent">
-                <div id="messageContentDate"><%= message.date %></div>
-                <div id="messageContentUserMsg">
-                  <div id="userTxt"><%= message.user %></div>: <%= message.message %>
-                </div>
-                <div id="messageContentTimeDelete">
+                <div id="messageContainer">
+                  <div id="messageContentDate"><%= message.date %></div>
+                  <div id="messageContentUserMsg">
+                    <div class="userTxt"><%= message.user %>: <%= message.message %> </div>
+                  </div>
                   <div id="messageContentTime"><%= message.time %></div>
+                </div>
+
+                <div id="messageContentTimeDelete">
                   <% if (currentUser.is_admin) { %>
                     <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
-                      <button>
+                      <button id="deleteBtn">
                         Delete Message
                       </button>
                     </form>

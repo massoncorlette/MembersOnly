@@ -2,24 +2,26 @@
 <html lang="en">
   <%- include('partials/header.ejs') %>
 <body>
-  <div>
-    <form action="/membersonly" method="POST">
-      <label for="code">Become a Member and enter the <i>Secret Code</i></label>
-      <input id="code" name="passcode" placeholder="Enter Code" type="text" />
-      <button type="submit">Enter</button>
-    </form>
+  <div id="membersonlyContainer">
+    <div class="formContainer">
+      <form action="/membersonly" method="POST">
+        <label for="code">Become a Member and enter the <i>Secret Code</i></label>
+        <input id="code" name="passcode" placeholder="Enter Code" type="text" />
+        <button type="submit">Enter</button>
+      </form>
+    </div>
+    <div class="formContainer">
+      <form action="/membersonly/adminsonly" method="POST">
+        <label for="code">Become a Admin and enter the <i>other Secret Code</i></label>
+        <input id="code" name="passcode" placeholder="Enter Code" type="text" />
+        <button type="submit">Enter</button>
+      </form>
+    </div>
+      <% if (locals.error) {%>
+        <div>
+          <%= error %>
+        </div>
+      <% } %>
   </div>
-  <div>
-    <form action="/membersonly/adminsonly" method="POST">
-      <label for="code">Become a Admin and enter the <i>other Secret Code</i></label>
-      <input id="code" name="passcode" placeholder="Enter Code" type="text" />
-      <button type="submit">Enter</button>
-    </form>
-  </div>
-    <% if (locals.error) {%>
-      <div>
-        <%= error %>
-      </div>
-    <% } %>
 </body>
 </html>
