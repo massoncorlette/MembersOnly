@@ -2,20 +2,20 @@
 <html lang="en">
   <%- include('partials/header.ejs') %>
 <body>
+  <div id="messageboxContainer">
   <h1>Send a Message <%= currentUser.first %></h1>
-  <div id="formContainer">
+  <div class="formContainer" id="formContainerMessageBox">
     <form action="/messagebox" method="POST">
-      <fieldset>
-        <legend>Add an epic message</legend>
+        <legend>Add an epic message..</legend>
         <div class="formEntries">
           <input placeholder="Enter Message Title" type="text" id="title" name="title" required><br>
         </div>
         <div class="formEntries">
           <textarea  placeholder="Enter a message." id="usermessage" name="usermessage" required></textarea>
         </div>
-      </fieldset>
       <button type="submit">Submit Message</button>
     </form>
+  </div>
   </div>
 </body>
 </html>

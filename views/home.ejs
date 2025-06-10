@@ -9,20 +9,25 @@
       </button>
     </form>
     <div class="homeLinks">
-      <a href="/membersonly">
-        <button>
-          Members Club
-        </button> 
-      </a>
-      <img src="/crown.svg"/>
+      <div class="linksContainer">
+        <a href="/membersonly">
+          <button>
+            Members Club
+          </button> 
+        </a>
+        <img src="/crown.svg"/>
+      </div>
+
 
     </div>
     <div class="homeLinks">
+    <div class="linksContainer">
       <a href="/messagebox">
         <button>
           Message Box
         </button> 
       </a>
+    </div>
      <img src="/message.svg"/>
     </div>
     <div id="messagesContainer">
@@ -50,14 +55,24 @@
                 </div>
               </li>
           <% } else { %> 
-            <li><%= message.message %> 
-              <% if (currentUser.is_admin) { %>
-                <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
-                  <button>
-                    Delete Message
-                  </button>
-                </form>
-            <% } %>         
+              <li class="messageContent">
+                <div id="messageContainer">
+                  <div id="messageContentDate"><%= message.date %></div>
+                  <div id="messageContentUserMsg">
+                    <div class="userTxt">Anon: <%= message.message %> </div>
+                  </div>
+                  <div id="messageContentTime"><%= message.time %></div>
+                </div>
+
+                <div id="messageContentTimeDelete">
+                  <% if (currentUser.is_admin) { %>
+                    <form action="/home/<%= message.message_id %>/deletemessage" method="POST">
+                      <button id="deleteBtn">
+                        Delete Message
+                      </button>
+                    </form>
+                <% } %>
+                </div>        
             </li>
         <% } %>
           <% }); %>

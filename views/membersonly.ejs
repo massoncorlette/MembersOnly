@@ -7,14 +7,18 @@
       <form action="/membersonly" method="POST">
         <label for="code">Become a Member and enter the <i>Secret Code</i></label>
         <input id="code" name="passcode" placeholder="Enter Code" type="text" />
-        <button type="submit">Enter</button>
+        <div class="formContainerBtnContainer">
+          <button type="submit">Enter</button>
+        </div>
       </form>
     </div>
     <div class="formContainer">
       <form action="/membersonly/adminsonly" method="POST">
-        <label for="code">Become a Admin and enter the <i>other Secret Code</i></label>
+        <label for="code">Get Administration access, enter the <i>other Secret Code</i></label>
         <input id="code" name="passcode" placeholder="Enter Code" type="text" />
-        <button type="submit">Enter</button>
+        <div class="formContainerBtnContainer">
+          <button type="submit">Enter</button>
+        </div>
       </form>
     </div>
       <% if (locals.error) {%>

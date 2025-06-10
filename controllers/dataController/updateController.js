@@ -6,7 +6,7 @@ async function handleUpdateUserMembership(req, res, next) {
 
   const user = res.locals.currentUser;
 
-  if (validateSecret(req, res, next, "SecretPasscode")) {
+  if (validateSecret(req, res, next, "Max")) {
     try {
       await pool.query("UPDATE users SET is_member = $1 WHERE user_id = $2", [true, user.user_id]);
       res.redirect("/home");
@@ -25,7 +25,7 @@ async function handleUpdateUserMembership(req, res, next) {
 async function handleUpdateUserAdmin(req, res, next) {
   const user = res.locals.currentUser;
 
-  if (validateSecret(req, res, next, "OtherSecret")) {
+  if (validateSecret(req, res, next, "Luna")) {
     try {
       await pool.query("UPDATE users SET is_admin = $1 WHERE user_id = $2", [true, user.user_id]);
       res.redirect("/home");
