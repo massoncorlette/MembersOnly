@@ -63,4 +63,8 @@ app.post("/log-out", (req, res, next) => {
   });
 });
 
-app.listen(8080, () => console.log("app listening on port 8080!"));
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
