@@ -1,10 +1,8 @@
-
 // const db = require("../db/queries");
 
 const { validationResult } = require("express-validator");
 
 const db = require("../db/queries");
-
 
 async function displayLogin(req, res) {
   const messages = await db.getAllMessages();
@@ -21,30 +19,28 @@ async function displayLogin(req, res) {
     });
   }
 
-  res.render(("index"),{message:lastMessage});
-};
+  res.render("index", { message: lastMessage });
+}
 
-async function displayHome(req,res) {
-
+async function displayHome(req, res) {
   const messages = await db.getMessagesInfo();
 
   console.log(messages);
 
-  res.render(("home") , {messages:messages});
+  res.render("home", { messages: messages });
+}
 
-};
+async function displayMessageBox(req, res) {
+  res.render("messagebox", { user: req.user });
+}
 
-async function displayMessageBox(req,res) {
-  res.render(("messagebox"), {user: req.user});
-};
-
-async function displayMembersOnly(req,res) {
-  res.render(("membersonly"));
-};
+async function displayMembersOnly(req, res) {
+  res.render("membersonly");
+}
 
 module.exports = {
-  displayLogin, 
+  displayLogin,
   displayHome,
   displayMessageBox,
-  displayMembersOnly
+  displayMembersOnly,
 };

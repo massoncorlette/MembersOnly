@@ -1,13 +1,13 @@
 /* eslint-disable no-undef */
 /////// app.js
 
-require('dotenv').config();
+require("dotenv").config();
 const path = require("node:path");
 const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 require("./config/passport"); // booting strategy before any initializing
-const pgSession = require('connect-pg-simple')(session);
+const pgSession = require("connect-pg-simple")(session);
 const pgPool = require("./db/pool");
 const app = express();
 app.set("views", path.join(__dirname, "views"));
@@ -24,21 +24,22 @@ const messageRouter = require("./routes/messageboard");
 
 app.use(express.urlencoded({ extended: false })); // so passport can parse form data
 
-app.use(session({
-  store: new pgSession({
-    pool : pgPool  ,
-    createTableIfMissing: true
-           
+app.use(
+  session({
+    store: new pgSession({
+      pool: pgPool,
+      createTableIfMissing: true,
+    }),
+    // express session options
+    secret: "cats",
+    resave: false,
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
+    saveUninitialized: true,
   }),
-  // express session options
-  secret: "cats",
-  resave: false,
-  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
-  saveUninitialized: true
-}));
+);
 
-app.use(passport.initialize());  //initializes Passport
-app.use(passport.session());  //enables persistent login sessions
+app.use(passport.initialize()); //initializes Passport
+app.use(passport.session()); //enables persistent login sessions
 
 app.use("/", indexRouter);
 

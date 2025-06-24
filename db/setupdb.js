@@ -41,6 +41,6 @@ async function main() {
   await client.query(DefaultSQL);
   await client.end();
   console.log("done");
-};
+}
 
 main();

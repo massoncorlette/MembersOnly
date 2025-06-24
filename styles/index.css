@@ -3,7 +3,7 @@
 }
 
 :root {
-  --primary-color: rgb(41,41,41);
+  --primary-color: rgb(41, 41, 41);
   --primary-color-alt: rgb(51, 51, 51);
   --primary-color-light: rgb(75, 75, 75);
   --secondary-color: rgb(16, 148, 255);
@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;;
+  font-family: "Montserrat", sans-serif;
   min-height: 100vh;
   min-width: 40vh;
   background-color: var(--primary-color);
@@ -31,57 +31,58 @@ a {
   justify-content: center;
   align-items: center;
   font-size: 1rem;
- }
+}
 
- #mainBody {
+#mainBody {
   flex: 1;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   font-size: 1rem;
- }
+}
 
- #messagesContainer {
+#messagesContainer {
   border-top: solid var(--secondary-color) 1px;
   flex: 1;
   display: flex;
- }
+}
 
- ul {
+ul {
   margin: 0%;
- }
+}
 
- #messagesContainer ul {
+#messagesContainer ul {
   list-style: none;
   flex: 1;
   padding: 0%;
- }
+}
 
- #messageContentUserMsg {
+#messageContentUserMsg {
   display: flex;
- }
+}
 
- .userTxt {
+.userTxt {
   font-weight: 700;
   padding: 10px;
   border-radius: 10px;
- }
+}
 
- #messageContentTime {
+#messageContentTime {
   font-size: 0.8rem;
   font-style: italic;
- }
+}
 
- .light {
+.light {
   background-color: var(--primary-color-light);
- }
+}
 
- .dark {
+.dark {
   background-color: var(--primary-color);
- }
+}
 
- #loginForm , #signupForm {
+#loginForm,
+#signupForm {
   width: 50%;
   height: 30%;
   display: flex;
@@ -91,202 +92,196 @@ a {
   border: solid var(--primary-color-light) 1px;
   background-color: var(--primary-color-alt);
   padding-top: 2%;
+}
 
- }
-
- #signupForm {
+#signupForm {
   height: 60%;
   padding: 4%;
- }
+}
 
- #logoutForm {
+#logoutForm {
   display: flex;
   justify-content: flex-end;
- }
+}
 
- h1 {
+h1 {
   width: 50%;
   display: flex;
   border-bottom: solid var(--primary-color-light) 1px;
-  font-style:  italic;
- }
+  font-style: italic;
+}
 
- #greeting {
+#greeting {
   font-size: 2rem;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   border-bottom: solid var(--primary-color-light) 1px;
- }
+}
 
- .homeLinks {
+.homeLinks {
   display: flex;
   align-items: center;
- }
+}
 
- .homeLinks a button {
+.homeLinks a button {
   font-size: 1.5rem;
   font-weight: 700;
- }
+}
 
- .linksContainer {
+.linksContainer {
   display: flex;
   align-items: center;
- }
+}
 
- .messageContent {
+.messageContent {
   display: flex;
   flex-direction: column;
   padding: 1%;
- }
+}
 
- #messageContainer {
+#messageContainer {
   flex: 4;
- }
+}
 
- #messageContentTimeDelete {
+#messageContentTimeDelete {
   flex: 1;
- }
+}
 
- #messageContentTimeDelete form{
+#messageContentTimeDelete form {
   display: flex;
   justify-content: flex-end;
+}
 
- }
-
- #loginForm form {
+#loginForm form {
   width: 70%;
   height: 60%;
   display: flex;
   flex-direction: column;
   flex: 3;
   margin-top: 2%;
- }
+}
 
-
- .formBtns {
+.formBtns {
   display: flex;
   justify-content: center;
- }
+}
 
-
- .loginInput, .signupInput {
+.loginInput,
+.signupInput {
   display: flex;
   flex: 1;
   background-color: var(--primary-color);
   color: var(--secondary-color);
   border: solid var(--primary-color-light) 1px;
- }
+}
 
-
- input {
+input {
   width: 100%;
   background-color: transparent;
   color: var(--secondary-color);
   font-size: 1.5rem;
   padding: 1%;
- }
+}
 
- input:focus {
+input:focus {
   outline: solid var(--secondary-color) 1px;
   border: solid var(--secondary-color) 1px;
- }
+}
 
-  #code {
-    border-bottom: solid var(--secondary-color) 1px;
-  }
+#code {
+  border-bottom: solid var(--secondary-color) 1px;
+}
 
-
- #email {
+#email {
   color: whitesmoke;
- }
+}
 
- #loginBtn {
+#loginBtn {
   height: 2rem;
   font-size: 1.2rem;
   font-weight: 700;
   margin-top: 2%;
- }
+}
 
- #loginBtn:hover {
+#loginBtn:hover {
   background-color: var(--primary-color-alt);
- }
+}
 
- #signUp {
+#signUp {
   font-size: 1rem;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- }
+}
 
- #signupBtn {
+#signupBtn {
   height: 2rem;
   font-size: 1rem;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
- }
+}
 
- #recentMsgContainer {
+#recentMsgContainer {
   margin-top: 2%;
   width: 50%;
- }
+}
 
- #recentMsgTxt{
+#recentMsgTxt {
   border-bottom: solid var(--primary-color-light) 1px;
- }
+}
 
- #newMsgContainer{
+#newMsgContainer {
   background-color: var(--primary-color);
   width: 100%;
   display: flex;
   font-weight: 700;
   font-style: italic;
- }
+}
 
- #newMsgContainer div {
+#newMsgContainer div {
   width: 80%;
   flex: 1;
- }
+}
 
- #errorsContainer {
+#errorsContainer {
   width: 50%;
   color: var(--error-color);
   font-weight: 700;
   border-bottom: solid var(--primary-color-light) 1px;
+}
 
- }
-
- #membersonlyContainer {
+#membersonlyContainer {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10%;
- }
+}
 
- #messageboxContainer {
-    flex: 1;
+#messageboxContainer {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- }
+}
 
 .formContainerBtnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
- }
+}
 
- .formContainerBtnContainer button {
+.formContainerBtnContainer button {
   font-size: 1rem;
   font-weight: 700;
- }
+}
 
 .formContainer {
   width: 50%;
@@ -309,18 +304,18 @@ a {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
 }
 
 #formContainerMessageBox form div {
   width: 80%;
 }
 
-#usermessage, #title {
+#usermessage,
+#title {
   flex: 1;
   padding: 1rem;
   font-size: 1rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   color: whitesmoke;
   background-color: rgb(20, 20, 20);
 
@@ -337,30 +332,34 @@ a {
   display: flex;
 }
 
-
-#usermessage:focus, textarea:focus {
+#usermessage:focus,
+textarea:focus {
   border: 1px solid var(--secondary-color);
 }
 
-
-
- button {
+button {
   background-color: transparent;
   color: var(--secondary-color);
- }
+}
 
- button:hover {
+button:hover {
   cursor: pointer;
- }
+}
 
- /* Tablet */
-@media (max-width: 80em) { 
-
-  h1, #greeting, #loginBtn, #signUp {
+/* Tablet */
+@media (max-width: 80em) {
+  h1,
+  #greeting,
+  #loginBtn,
+  #signUp {
     font-size: 1rem;
   }
 
-  body, input, button, .messageContent, .homeLinks a button {
+  body,
+  input,
+  button,
+  .messageContent,
+  .homeLinks a button {
     font-size: 0.8rem;
   }
 
@@ -368,31 +367,29 @@ a {
     font-size: smaller;
   }
 
- 
   #loginForm form {
-  width: 100%;
-  height: 60%;
-  display: flex;
-  flex-direction: column;
- }
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+  }
 
- #loginForm {
-  padding: 2%;
-  width: 80%;
- }
-
-  #recentMsgContainer, h1, #signupForm {
+  #loginForm {
+    padding: 2%;
     width: 80%;
   }
 
+  #recentMsgContainer,
+  h1,
+  #signupForm {
+    width: 80%;
+  }
 }
 
 /*Mobile*/
- @media (max-width: 51.25em) { 
-
-  body, input {
+@media (max-width: 51.25em) {
+  body,
+  input {
     font-size: 0.6rem;
   }
-
- }
-
+}
