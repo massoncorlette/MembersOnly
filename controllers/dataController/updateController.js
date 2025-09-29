@@ -25,7 +25,7 @@ async function handleUpdateUserMembership(req, res, next) {
 async function handleUpdateUserAdmin(req, res, next) {
   const user = res.locals.currentUser;
 
-  if (validateSecret(req, res, next, "other Secret code")) {
+  if (validateSecret(req, res, next, "other Secret Code")) {
     try {
       await pool.query("UPDATE users SET is_admin = $1 WHERE user_id = $2", [
         true,
