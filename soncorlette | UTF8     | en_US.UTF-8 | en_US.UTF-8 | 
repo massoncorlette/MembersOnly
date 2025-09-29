@@ -1,0 +1,17 @@
+                                              List of databases
+          Name          |     Owner      | Encoding |   Collate   |    Ctype    |      Access privileges      
+------------------------+----------------+----------+-------------+-------------+-----------------------------
+ blogapiproject         | massoncorlette | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ massoncorlette         | postgres       | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/postgres               +
+                        |                |          |             |             | postgres=CTc/postgres      +
+                        |                |          |             |             | massoncorlette=CTc/postgres
+ membersonly            | massoncorlette | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ messageapplication     | massoncorlette | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres               | postgres       | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0              | postgres       | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres                +
+                        |                |          |             |             | postgres=CTc/postgres
+ template1              | postgres       | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres                +
+                        |                |          |             |             | postgres=CTc/postgres
+ testmessageapplication | massoncorlette | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+(8 rows)
+

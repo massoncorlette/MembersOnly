@@ -53,6 +53,8 @@ const { validationResult } = require("express-validator");
 const authenticateUser = (req, res, next) => {
   const errors = validationResult(req);
 
+  console.log("authenticateUser called");
+
   if (!errors.isEmpty()) {
     res.locals.errorMsg = "Wrong email or password.";
 

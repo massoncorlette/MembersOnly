@@ -5,8 +5,10 @@ const { validationResult } = require("express-validator");
 const db = require("../db/queries");
 
 async function displayLogin(req, res) {
+  
   const messages = await db.getAllMessages();
   let lastMessage = null;
+
 
   if (messages) {
     lastMessage = messages.pop();
