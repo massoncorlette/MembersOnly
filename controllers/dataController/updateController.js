@@ -4,7 +4,7 @@ const { validateSecret } = require("../validation");
 async function handleUpdateUserMembership(req, res, next) {
   const user = res.locals.currentUser;
 
-  if (validateSecret(req, res, next, "Max")) {
+  if (validateSecret(req, res, next, "Secret Code")) {
     try {
       await pool.query("UPDATE users SET is_member = $1 WHERE user_id = $2", [
         true,
@@ -25,7 +25,7 @@ async function handleUpdateUserMembership(req, res, next) {
 async function handleUpdateUserAdmin(req, res, next) {
   const user = res.locals.currentUser;
 
-  if (validateSecret(req, res, next, "Luna")) {
+  if (validateSecret(req, res, next, "other Secret code")) {
     try {
       await pool.query("UPDATE users SET is_admin = $1 WHERE user_id = $2", [
         true,
